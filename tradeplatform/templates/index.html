@@ -1,0 +1,43 @@
+<%inherit file="base.html" />
+
+
+<%block name="title">
+<title>Blazing5 MMO</title>
+</%block>
+
+<div class="container">
+    <div class="hero-unit">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span6">
+                    <h1>Blaing5 MMO</h1>
+
+                    <p>Welcome</p>
+                    <p>
+                        <a class="btn btn-primary btn-large">
+                            Learn more
+                        </a>
+                    </p>
+                </div>
+                <div class="span6">
+                    <div id="myCarousel" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="item">
+                                <img src="${request.static_url('tradeplatform:static/1.jpg')}" alt="">
+                            </div>
+                            <div class="item">
+                                <img src="${request.static_url('tradeplatform:static/2.jpg')}" alt="">
+                            </div>
+                            <div class="item active">
+                                <img src="${request.static_url('tradeplatform:static/3.jpg')}" alt="">
+                            </div>
+                        </div>
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<%inherit file="base.html" />
+
+
+<%block name="title">
+<title>Sign up</title>
+</%block>
+<div class="container">
+    <div class="hero-unit">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span6">
+                    <form class="form-horizontal" action="${post_url}" method="post">
+                        <div class="control-group">
+                            <label class="control-label" for="inputEmail">Email</label>
+
+                            <div class="controls">
+                                <input type="text" id="inputEmail" placeholder="Email" name="mail">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="inputPassword">Password</label>
+
+                            <div class="controls">
+                                <input type="password" id="inputPassword" placeholder="Password" name="passwd">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="confirmpasswd">Confirm Password</label>
+
+                            <div class="controls">
+                                <input type="password" id="confirmpasswd" placeholder="Confirm" name="passwd1">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <button type="submit" name="signup.submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="span6">
+                    <p>OR Login?</p>
+                    <a class="btn btn-large btn-primary" href="login">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

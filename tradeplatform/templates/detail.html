@@ -1,0 +1,55 @@
+<%inherit file="base.html" />
+
+
+<%block name="title">
+<title>Item Detail</title>
+</%block>
+<div class="container">
+    <div class="hero-unit">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <h1>Item Detail: </h1>
+                <br />
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <td>Character Name : </td>
+                        <td>${item['name']}</td>
+                    </tr>
+                    <tr>
+                        <td>Character Level : </td>
+                        <td>${item['level']}</td>
+                    </tr>
+                    <tr>
+                        <td>Price : </td>
+                        <td>${item['price']}</td>
+                    </tr>
+                    <tr>
+                        <td>Deal Created at : </td>
+                        <td>${item['gmt_create']}</td>
+                    </tr>
+                    <tr>
+                        <td>Deal Status : </td>
+                        <td>
+                            % if item['status'] == 1:
+                            wait for buy
+                            % elif item['status'] == 2:
+                            trade success
+                            % elif item['status'] == 3:
+                            apply for refund
+                            % elif item['status'] == 4:
+                            refund success
+                            % endif
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                % if user_login and user_login != item['seller'] and item['status'] == 1:
+                <form action="${post_url}" method="post">
+                    <button type="submit" class="btn btn-primary btn-large pull-right" name="buy.submit">Buy Now</button>
+                </form>
+                % endif
+            </div>
+        </div>
+    </div>
+</div>

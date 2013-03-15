@@ -1,0 +1,46 @@
+<%inherit file="base.html" />
+
+
+<%block name="title">
+<title>Sell</title>
+</%block>
+<div class="container">
+    <div class="hero-unit">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <form class="form-horizontal" action="${post_url}" method="post">
+                    <div class="control-group">
+                        <label class="control-label" for="charaName">Character Name</label>
+                        <div class="controls">
+                            <input type="text" id="charaName" placeholder="your character name" name="name">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="charaLevel">Level</label>
+                        <div class="controls">
+                            <input type="text" id="charaLevel" placeholder="your level" name="level">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="price">Price</label>
+                        <div class="controls">
+                            <input type="text" id="price" placeholder="your willing price" name="price">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="tags">Tags</label>
+                        <div class="controls">
+                            <input type="text" id="tags" placeholder="any tag, separate by space" name="tags">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn btn-primary" name='sell.submit'>Submit</button>
+                            <button type="submit" class="btn" name='sell.cancel'>Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

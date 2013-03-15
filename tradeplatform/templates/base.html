@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <%block name="title" />
+    <link rel="shortcut icon" href="${request.static_url('tradeplatform:static/favicon.ico')}" />
+    <!-- Bootstrap -->
+    <link href="${request.static_url('tradeplatform:static/bootstrap/css/bootstrap.min.css')}" rel="stylesheet">
+    <link href="${request.static_url('tradeplatform:static/bootstrap/css/bootstrap-responsive.min.css')}" rel="stylesheet">
+</head>
+<body>
+<div class="navbar navbar-static-top navbar-inverse">
+    <div class="navbar-inner">
+        <div class="container">
+            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <!-- Be sure to leave the brand out there if you want it shown -->
+            <a class="brand" href="/">Blazing5</a>
+            <!-- Everything you want hidden at 940px or less, place within here -->
+            <div class="nav-collapse collapse">
+                <!-- .nav, .navbar-search, .navbar-form, etc -->
+                <ul class="nav">
+                    <li><a href="/"><i class="icon-home icon-white"></i> Home</a></li>
+                    <li><a href="/sell"><i class="icon-shopping-cart icon-white"></i> Sell</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+
+                <ul class="nav pull-right">
+                    <li>
+                        <form class="navbar-search pull-left">
+                            <input type="text" class="search-query" placeholder="Search" data-provide="typeahead">
+                        </form>
+                    </li>
+                    % if user_login:
+                    <li><a href="/account">Hi, ${user_login}</a></li>
+                    <li><a href="/logout"><i class="icon-off icon-white"></i> Log out</a></li>
+                    % else:
+                    <li><a href="/login">Log in</a></li>
+                    % endif
+                </ul>
+            </div>
+            <!--nav-collapse-->
+        </div>
+        <!--containner-->
+    </div>
+    <!--inner-->
+</div>
+<!--navbar-->
+${self.body()}
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="${request.static_url('tradeplatform:static/bootstrap/js/bootstrap.js')}"></script>
+<!--<script src="${request.static_url('tradeplatform:static/auto_complete.js')}"></script>-->
+<script>
+    $('.search-query').typeahead({
+        source: [
+                % for x in tag_list:
+                     "${x}",
+                % endfor
+        ],
+        onselect: function(tag) {
+            var url = "http://localhost:6543/tag/"
+            url += tag
+            window.location.href=url
+        },
+    });
+</script>
+</body>
+</html>

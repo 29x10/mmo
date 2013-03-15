@@ -1,0 +1,76 @@
+<%inherit file="base.html" />
+
+
+<%block name="title">
+<title>Buying List</title>
+</%block>
+<div class="container">
+    <div class="hero-unit">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3">
+                    <ul class="nav nav-list">
+                        <li><a href="/account"><i class="icon-th-large"></i> Overview</a></li>
+                        <li><a href="/selling"><i class="icon-th-large"></i> Selling List</a></li>
+                        <li class="active"><a href="/buying"><i class="icon-th-large"></i> Buying List</a></li>
+                        <li><a href="#"><i class="icon-th-large"></i> Change Password</a></li>
+
+                    </ul>
+                </div>
+                <div class="span9">
+                    % if not list:
+                    <h1>Your Buying List is Empty.</h1>
+                    % else:
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th>name</th>
+                            <th>price</th>
+                            <th>status</th>
+                        </tr>
+                        </thead>
+
+                        % for item in list:
+                        <tbody>
+                        <tr>
+                            <td colspan="2">transaction id: <a href="/item/${item['_id']}">${item['_id']}</a></td>
+                            <td colspan="1">deal created: ${item['gmt_create']}</td>
+                        </tr>
+                        <tr class="warning">
+                            <td>${item['name']}</td>
+                            <td>${item['price']}</td>
+                            <td>
+                                % if item['status'] == 1:
+                                wait for buy
+                                % elif item['status'] == 2:
+                                trade success
+                                <a href="/refund?id=${item['_id']}">
+                                    <button class="btn btn-primary">apply for refund</button>
+                                </a>
+                                % elif item['status'] == 3:
+                                apply for refund
+                                <a href="/cancelRefund?id=${item['_id']}">
+                                    <button class="btn btn-primary">cancel refund</button>
+                                </a>
+                                % elif item['status'] == 4:
+                                refund success
+                                % endif
+                            </td>
+                        </tr>
+                        </tbody>
+                        % endfor
+                    </table>
+                    % if start_key:
+                    <ul class="pager">
+                        <li class="next">
+                            <a href="/buying?start_key=${start_key}">More</a>
+                        </li>
+                    </ul>
+                    % endif
+                    % endif
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
