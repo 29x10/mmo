@@ -1,4 +1,3 @@
-# -*- coding: UTF-8 -*-
 from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from pyramid.config import Configurator

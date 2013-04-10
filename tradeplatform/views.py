@@ -1,11 +1,9 @@
-# -*- coding: UTF-8 -*-
 from datetime import datetime
 from couchdb import Document, ResourceNotFound
 from couchdb.client import ViewResults
 from cryptacular.bcrypt import BCRYPTPasswordManager
 from paypal.exceptions import PayPalAPIResponseError
 from pyramid.httpexceptions import HTTPNotFound, HTTPFound, HTTPForbidden
-from pyramid.response import Response
 from pyramid.security import remember, authenticated_userid, forget
 from modules.account import Account
 from pyramid.view import view_config
